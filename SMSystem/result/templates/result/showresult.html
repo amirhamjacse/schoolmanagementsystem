@@ -1,0 +1,48 @@
+{% extends 'result/base.html' %} {% load static %} {% block body %}
+
+<div class="container">
+  <h2 class="bg-primary text-white text-center py-2">
+    School Management System
+  </h2>
+  <h2 class="alert alert-primary text-center py-2">Student Info with GPA</h2>
+  <table class="table table-bordered text-center">
+    <tr>
+      <th>Student Name</th>
+      <th>Roll</th>
+      <th>Class</th>
+      <th>Registration No</th>
+      <th>GPA</th>
+      <th>Action</th>
+    </tr>
+
+    <tr>
+      <td>{{s.student_name}}</td>
+      <td>{{s.roll}}</td>
+      <td>{{s.class_name}}</td>
+      <td>{{s.regi_no}}</td>
+      {% if ps.gpa %}
+      <td>{{ps.gpa}}</td>
+      {% else %}
+      <td>No Result/Define First</td>
+      {% endif %}
+
+
+      <td>
+        <a href="{% url 'details' s.id%}" class="btn btn-danger btn-sm"
+        >Details Result</a>
+        
+        {% if ps.gpa %}
+        Result Defined
+        {% else %}
+        <a href="{% url 'addres' s.id%}" class="btn btn-warning btn-sm"
+        >Define Result</a
+        >
+        {% endif %}
+      </td>
+    </tr>
+  </table>
+  <a href="{% url 'home' %}" class="btn btn-primary btn-sm">Back to HomePage</a>
+  
+</div>
+
+{% endblock body %}

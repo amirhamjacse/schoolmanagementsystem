@@ -1,0 +1,60 @@
+{% extends 'result/base.html' %} {% load static %} {% block body %}
+
+<div class="container">
+  <h2 class="bg-primary text-white text-center py-2">
+    School Management System
+  </h2>
+  <h2 class="alert alert-primary text-center py-2">Marksheet</h2>
+
+  <div class="container">
+    <div class="table-wrapper">
+      <table class="table table-bordered text-start">
+        <tr>
+          <td>Roll No</td>
+          <td>{{s.roll}}</td>
+          <td>Registrtion No</td>
+          <td>{{s.regi_no}}</td>
+        </tr>
+        <tr>
+          <td>Name of Student</td>
+          <td colspan="3">{{s.student_name}}</td>
+        </tr>
+        <tr>
+          <td colspan="2">Class</td>
+          <td colspan="2">{{s.class_name}}</td>
+          
+        </tr>
+
+        <tr>
+          <td colspan="2">GPA</td>
+          <th colspan="2">{{ps.gpa}}</th>
+        </tr>
+        <tr>
+          <th colspan="2">Subject List</th>
+          <th colspan="2">Marks</th>
+        </tr>
+        <tr>{% if ps.sub_name_1 %}
+          <td colspan="2">{{ps.sub_name_1}}</td>
+          <td colspan="2">{{ps.sub_number1}}</td>
+          {% endif %}
+        </tr>
+        <tr>{% if ps.sub_name_2 %}
+          <td colspan="2">{{ps.sub_name_2}}</td>
+          <td colspan="2">{{ps.sub_number2}}</td>
+        </tr>{% endif %}
+        <tr>{% if ps.sub_name_3 %}
+          <td colspan="2">{{ps.sub_name_3}}</td>
+          <td colspan="2">{{ps.sub_number3}}</td>
+          {% else %}
+          <td colspan="4" class="text-danger">No result Found Define First</td>
+        </tr>{% endif %}
+      </table>
+    </div>
+    <a href="{% url 'home' %}" class="btn btn-primary btn-sm">HomePage</a>
+    <a href="{% url 'result' s.id %}" class="btn btn-primary btn-sm">Back to Recent</a>
+    <a href="{% url 'pdf' s.id %}" class="btn btn-warning btn-sm">Download PDF</a>
+  </div>
+
+ 
+
+{% endblock body %}

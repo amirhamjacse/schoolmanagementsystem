@@ -1,0 +1,15 @@
+{% extends 'result/base.html' %}
+{% load static %}
+{% block body %}
+
+<div class="container">
+<h2 class="bg-primary text-white text-center py-2">School Management System</h2>
+    <form action="" method="post">
+    {% csrf_token %}
+ 
+       {{fm}}
+        <input class="btn btn-warning mt-2" type="submit" value="update">
+        <a class="btn btn-primary mt-2" href="{% url 'home' %}">Back</a> 
+      </div>
+    </form>
+{% endblock body %}

@@ -1,0 +1,42 @@
+{% extends 'result/base.html' %}
+{% load static %}
+{% block body %}
+    
+<div class="container">
+    {% if messages %}
+    {% for message in messages  %}
+        <p {% if message.tags %} class="alert alert-{{message.tags}}" {% endif %}>
+            <a class="btn btn-warning my-2" href="{% url 'result' p.id %}">Back</a>  
+    {{message}} </p>
+    {% endfor %}
+    {% endif %}
+</div>
+
+    <div class="container">
+        <h2 class="bg-primary text-white text-center py-2">School Management System</h2>
+        <h2 class="alert alert-primary text-center py-2">Add Students Subject with Marks</h2>
+
+
+        <form action="" method="post">
+            {% csrf_token %}
+            <label for="a">Subject Name 1</label>
+            <input type="text" class="form-control" name="b" id="a" required>
+            <label for="b">Marks 1</label>
+            <input type="number" class="form-control" name="a" id="b" required>
+            <label for="c">Subject Name 2</label>
+             <input type="text" class="form-control" name="bb" id="c" required>
+            <label for="d">Marks 2</label>
+            <input type="number" class="form-control" name="aa" id="d" required>
+            <label for="e">Subject Name 3</label>
+            <input type="text" class="form-control" name="bbb" id="e" required>
+            <label for="f">Marks 3</label>
+           <input type="number" class="form-control" name="aaa" id="f" required>
+            <input type="submit" class="btn btn-warning my-2" value="Add">
+            <a class="btn btn-primary my-2" href="{% url 'home' %}">Home Page</a> 
+            <a class="btn btn-warning my-2" href="{% url 'result' p.id %}">Back To Recent</a> 
+        
+        </form>
+    </div>
+
+    
+    {% endblock body %}

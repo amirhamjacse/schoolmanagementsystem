@@ -1,0 +1,20 @@
+{% extends 'academic/base.html' %}
+{% load static %}
+{% block body %}
+
+<div class="container">
+<h2 class="bg-primary text-white text-center py-2">School Management System</h2>
+<h2 class="alert alert-primary text-center ">Update Data</h2>
+    <form action="" method="post">
+    {% csrf_token %}
+ 
+        {% for s in fm %}
+            <div>{{s.label}}</div>
+            <div>{{s}}</div>
+            <small class="text-danger">{{s.errors|striptags}}</small>
+            {% endfor %}
+        <input class="btn btn-warning mt-2" type="submit" value="update">
+        <a class="btn btn-primary mt-2" href="{% url 'home' %}">Back</a> 
+      </div>
+    </form>
+{% endblock body %}
